@@ -48,6 +48,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.19.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.4",
+    "supertest": "^4.0.2"
   }
 }

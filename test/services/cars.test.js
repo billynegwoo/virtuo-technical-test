@@ -1,14 +1,8 @@
 const assert = require('assert');
 const app = require('../../src/app');
-const url = require('url');
+const request = require('supertest');
 
 const port = app.get('port') || 3030;
-const getUrl = pathname => url.format({
-  hostname: app.get('host') || 'localhost',
-  protocol: 'http',
-  port,
-  pathname
-});
 
 describe('\'cars\' service', () => {
   before(function(done) {
