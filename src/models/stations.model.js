@@ -6,7 +6,19 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const stations = new Schema({
-    text: { type: String, required: true }
+    _id: Schema.Types.ObjectId,
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+      validate: {
+        validator: (v) => {
+          return v.length > 3;
+        },
+        message: props => `${props.value} is too short`
+      },
+    },
+    cars: [{ type: Schema.Types.ObjectId, ref: 'cars' }]
   }, {
     timestamps: true
   });
