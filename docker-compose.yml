@@ -1,0 +1,21 @@
+version: "3"
+services:
+  virtuo:
+    container_name: vituo
+    restart: always
+    build: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+  mongo:
+    container_name: virtuo-mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
